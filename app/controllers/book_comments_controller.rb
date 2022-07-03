@@ -1,7 +1,7 @@
 class BookCommentsController < ApplicationController
   before_action :book_params
 
-   def create
+  def create
     # @book = Book.find(params[:book_id])
     # @book_comment = BookComment.new
     @book_comment = current_user.book_comments.new(book_comment_params)
