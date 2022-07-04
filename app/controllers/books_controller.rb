@@ -18,8 +18,9 @@ before_action :ensure_correct_user, only: [:update,:edit,:destroy]
     }
     # @books=Kaminari.paginate_array(books).page(params[:page]).per(25)
     @book = Book.new
+    # @books = Book.all
   end
-
+  
   # def index
     # to  = Time.current.at_end_of_day
     # from  = (to - 6.day).at_beginning_of_day
