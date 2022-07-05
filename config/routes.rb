@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
- 
+
+  get 'chats/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
+  # chat機能
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
   resources :book_comments, only: [:create,:destroy]
@@ -16,9 +20,6 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  resources :groups, except: [:destroy]
-  resources :groups do      #ここ！
-    get "join" => "groups#join"
-  end
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update]
 
 end
