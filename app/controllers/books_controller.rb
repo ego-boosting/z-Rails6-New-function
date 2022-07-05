@@ -21,6 +21,7 @@ before_action :ensure_correct_user, only: [:update,:edit,:destroy]
     # @books = Book.all
   end
 
+
   # def index
   #   to  = Time.current.at_end_of_day
   #   from  = (to - 6.day).at_beginning_of_day
