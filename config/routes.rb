@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  resources :groups, only: [:new, :index, :show, :create, :edit, :update]
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+  # グループ参加と退会
+    resource :group_users, only: [:create, :destroy]
+
+  end
 
 end

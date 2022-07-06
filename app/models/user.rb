@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  
+  has_many :group_users, dependent: :destroy
+
  # 投稿閲覧数
   has_many :view_counts, dependent: :destroy
 
