@@ -30,7 +30,8 @@
                 <% end %>
               <% end %>
             </table>
-
+            
+            <div class="errors"><%= render "layouts/errors", obj: @chat %></div>
 
               <%= form_with model: @chat, data: {remote: true} do |f| %>
               <%= f.text_field :message %>

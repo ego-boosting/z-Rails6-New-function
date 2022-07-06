@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
   # chat機能
   get 'chat/:id', to: 'chats#show', as: 'chat'
-  resources :chats, only: [:create]
+  resources :chats, only: [:show,:create]
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
   resources :book_comments, only: [:create,:destroy]

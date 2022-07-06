@@ -20,12 +20,9 @@
           <td class=<%= "favorite-btn-" + @book.id.to_s %>><%= render "favorites/favorite_btn", book: @book %></td>
 
           <!--星レビュー機能-->
-
-
-              <%= render 'star', book: @book %>
-
-
-
+          <%= render 'star', book: @book %>
+          <!--投稿閲覧数-->
+          <td class="view-count">閲覧数: <%= @book.view_counts.count %></td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
