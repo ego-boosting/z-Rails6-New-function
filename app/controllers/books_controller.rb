@@ -21,8 +21,17 @@ before_action :ensure_correct_user, only: [:update,:edit,:destroy]
       a.favorited_users.includes(:favorites).where(created_at: from...to).size
     }
     # @books=Kaminari.paginate_array(books).page(params[:page]).per(25)
-    @book = Book.new
-    # @books = Book.all
+    if params[:latest]
+       @books = Book.latest
+    elsif params[:old]
+       @books = Book.old
+    elsif params[:star_count]
+       @books = Book.star_count
+    else
+       @books = Book.all
+    end
+      @book = Book.new
+      # @books = Book.all
   end
 
 

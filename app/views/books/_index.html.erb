@@ -23,6 +23,7 @@
 
          <!--星レビュー機能-->
          <%= render 'books/star', book: book %>
+        <td><%= l book.created_at %></td>
 
         <td>コメント件数：<%= book.book_comments.count %></td>
         <td class="view-count">閲覧数: <%= book.view_counts.count %></td>
