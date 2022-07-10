@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
-   before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+
+  def new
+    @group = Group.new
+  end
 
   def index
     @book = Book.new
@@ -10,10 +14,6 @@ class GroupsController < ApplicationController
   def show
     @book = Book.new
     @group = Group.find(params[:id])
-  end
-
-  def new
-    @group = Group.new
   end
 
   def create
@@ -35,6 +35,20 @@ class GroupsController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  #該当部分のみ
+
+  def new_mail
+    @group = Group.find(params[:group_id])
+  end
+
+  def send_mail
+    @group = Group.find(params[:group_id])
+    group_users = @group.users
+    @mail_title = params[:mail_title]
+    @mail_content = params[:mail_content]
+    ContactMailer.send_mail(@mail_title, @mail_content,group_users).deliver
   end
 
   private
