@@ -102,4 +102,24 @@
       </tr>
     </tbody>
   </table>
-  
+  <canvas id="myChart" width="300" height="100"></canvas>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  // turbolinksを無効化したい処理
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+datasets: [{
+label: "投稿数",
+data: [<%= @books.created_6day_ago.count %>, <%= @books.created_5day_ago.count %>, <%= @books.created_4day_ago.count %>, <%= @books.created_3day_ago.count %>, <%= @books.created_2day_ago.count %>, <%= @yesterday_book.count %>, <%= @today_book.count%>],
+backgroundColor: 'rgba(255, 80, 120, 1.0)',
+borderColor: 'rgba(255, 80, 120, 1.0)',
+fill: false
+}]
+},
+});
+});
+</script>
